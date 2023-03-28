@@ -8,7 +8,7 @@ import java.util.*;
 public class Main {
     static Scanner scanner = new Scanner(System.in);
     static List<Competition> storage = new ArrayList<>();
-    static String[] Menu = {"Додати", "Видалити", "Показати", "Змінити", "Сортувати", "Порівняти"};
+    static String[] Menu = {"Додати", "Видалити", "Показати", "Змінити", "Сортувати", "Порівняти", "Вихід"};
 
     private static void from_db_to_arr() throws IOException {
         JsonParser parser = new JsonParser();
@@ -31,14 +31,14 @@ public class Main {
     private static void ShowArr(ArrayList<Competition> arr) {
         String leftAlignFormat = "| %-2d | %-25s | %-6d | %-3.1f | %-4d | %-3d | %n";
         System.out.format("|------------------------------------------------------------|%n");
-        System.out.format("| №  | Факультет      | Кількість | Середній бал | :) | :( |+%n");
+        System.out.format("| №  | Факультет                 |  К-сть |С.бал|  :)  | :(  |3%n");
         System.out.format("|------------------------------------------------------------|%n");
         for (int i = 0; i < arr.size(); i++) {
              System.out.format(leftAlignFormat, (i + 1), arr.get(i).getFaculty(),
                     arr.get(i).getAmountOfStudents(), arr.get(i).getGPAbyFaculty(),
                     arr.get(i).getStellarStudents(), arr.get(i).getAbysmalStudents());
         }
-        System.out.format("+------------------------------------------------------------+%n");
+        System.out.format("|------------------------------------------------------------|%n");
         }
     private static void Sorting() {
         ArrayList<Competition> newArr = new ArrayList<>(storage);
@@ -193,7 +193,7 @@ public class Main {
         }
         while (true) {
             int input = scanner.nextInt();
-            if (input == 0) {
+            if (input == 7) {
                 System.out.println("Вихід");
                 break;
             } else if (input == 1) {
